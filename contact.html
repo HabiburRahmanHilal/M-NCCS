@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Email Sender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(171, 243, 175);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-image: url("images/ab3.jpg");
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 400px;
+            background-color: #FFFFFF66;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 30px #0053FF;
+            border: 2px solid blue;
+            margin: 20px auto; /* Centering the container horizontally */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            margin-bottom: 15px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center; /* Center navigation items horizontally */
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="about.html">About Me</a>
+        <a href="index.html">Home</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+        <h1>Email Sender</h1>
+        <form id="emailForm">
+            <label for="to">To:</label>
+            <input type="email" id="to" required>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" required>
+            <label for="message">Message:</label>
+            <textarea id="message" required></textarea>
+            <button type="button" onclick="sendEmail()">Send Email</button>
+        </form>
+    </div>
+
+   
+
+    <script>
+        function sendEmail() {
+            const to = document.getElementById('to').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Validate email format
+            if (!validateEmail(to)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // For demonstration purposes, you would need a server-side script to handle email sending.
+            // This is just a frontend example.
+            alert(`Email sent to ${to} with subject: "${subject}" and message: "${message}"`);
+        }
+
+        function validateEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+    </script>
+</body>
+</html>
